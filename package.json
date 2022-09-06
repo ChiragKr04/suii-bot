@@ -1,6 +1,6 @@
 {
   "scripts":{
-    "start":"node ."
+    "start":"node . -p 4000"
   },
   "dependencies": {
     "@discordjs/builders": "^1.2.0",
