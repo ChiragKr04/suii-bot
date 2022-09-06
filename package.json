@@ -1,6 +1,6 @@
 {
   "scripts":{
-    "start":"node . -p 4000"
+    "start":"node . -p $PORT"
   },
   "dependencies": {
     "@discordjs/builders": "^1.2.0",
