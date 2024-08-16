@@ -1,25 +1,25 @@
-FROM node:17
+FROM node:22
 
-# Set up where the app going to look for in linux directory
+# Set up where the app is going to be in the Linux directory
 WORKDIR /usr/src/app
 
-# Copy package.json and pakage-loc.json
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Installing prettier package
+# Installing prettier package globally
 RUN npm install prettier -g
 
-# Run npm install
+# Install dependencies
 RUN npm install
+
+# Install ts-node globally
+RUN npm install -g ts-node
 
 # Copy all source files
 COPY . .
 
-# Start the server
-# RUN node .
-
 # Expose port number of docker image
 EXPOSE 6969
 
-# Run node files
-CMD [ "node", "." ]
+# Run ts-node instead of node to run the TypeScript file
+CMD [ "ts-node", "index.tsx" ]
