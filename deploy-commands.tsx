@@ -1,7 +1,7 @@
 import { REST, Routes } from 'discord.js';
-import { clientId, token } from './config.json';
 import fs from 'node:fs';
 import path from 'node:path';
+import { CLIENTID, TOKEN } from '.';
 
 // Define the type for command modules
 interface Command {
@@ -28,7 +28,7 @@ for (const file of commandFiles) {
 }
 
 // Set up REST client for Discord API
-const rest = new REST().setToken(token);
+const rest = new REST().setToken(TOKEN);
 
 (async () => {
 	try {
@@ -36,7 +36,7 @@ const rest = new REST().setToken(token);
 
 		// Deploy commands to Discord
 		const data = await rest.put(
-			Routes.applicationCommands(clientId),
+			Routes.applicationCommands(CLIENTID),
 			{ body: commands },
 		);
 
