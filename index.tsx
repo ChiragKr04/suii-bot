@@ -1,6 +1,9 @@
 import { Client, Collection, GatewayIntentBits } from "discord.js";
 import { SuiBot } from "./utils/SuiBot";
-import { token } from './config.json';
+require('dotenv').config();
+
+export const TOKEN: string = process.env.TOKEN ?? '';
+export const CLIENTID: string = process.env.CLIENTID ?? '';
 
 import path from 'node:path';
 import fs from 'node:fs';
@@ -47,4 +50,4 @@ for (const file of commandFiles) {
 }
 
 
-client.login(token);
+client.login(TOKEN);
